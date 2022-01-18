@@ -1,5 +1,8 @@
 package com.example.introduction.repository;
 
+import java.util.List;
+import java.util.Optional;
+
 import com.example.introduction.domain.Member;
 
 public interface MemberRepositoryInterface {
@@ -7,5 +10,7 @@ public interface MemberRepositoryInterface {
     Long save(Member member);
 
     //조회
-    Member findById(Long memberId);
+    Optional<Member> findById(Long memberId);
+    Optional<Member> findByName(String memberName);
+    List<Member> findAll();
 }
