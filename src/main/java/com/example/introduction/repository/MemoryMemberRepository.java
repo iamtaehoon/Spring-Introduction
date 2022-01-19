@@ -13,6 +13,10 @@ import com.example.introduction.domain.Member;
 public class MemoryMemberRepository implements MemberRepositoryInterface {
     private Map<Long, Member> memberRepository = new HashMap();
     private Long sequence = 0L;
+
+    public MemoryMemberRepository() {
+    }
+
     @Override
     public Long save(Member member) {
         sequence += 1;
