@@ -8,8 +8,9 @@ import org.junit.jupiter.api.Test;
 
 import com.example.introduction.domain.Member;
 
-class MemberRepositoryTest {
+class MemoryMemberRepositoryTest {
     MemoryMemberRepository memberRepository = new MemoryMemberRepository();
+
     @Test
     void 회원_저장() {
         //given
@@ -94,5 +95,34 @@ class MemberRepositoryTest {
 
         Assertions.assertThat(members.contains(member2)).isFalse();
     }
+
+    // @Test
+    // public void findByName() {
+    //     System.out.println(memberRepository.findAll().size());
+    //     Member member1 = new Member();
+    //     member1.setName("spring1");
+    //     memberRepository.save(member1);
+    //
+    //     Member member2 = new Member();
+    //     member2.setName("spring2");
+    //     memberRepository.save(member2);
+    //
+    //     Member result = memberRepository.findByName("spring1").get();
+    //     Assertions.assertThat(result).isEqualTo(member1);
+    // }
+    //
+    // @Test
+    // public void findAll() {
+    //     Member member1 = new Member();
+    //     member1.setName("spring1");
+    //     memberRepository.save(member1);
+    //
+    //     Member member2 = new Member();
+    //     member2.setName("spring2");
+    //     memberRepository.save(member2);
+    //
+    //     List<Member> all = memberRepository.findAll();
+    //     Assertions.assertThat(all.size()).isEqualTo(2);
+    // }
 
 }
