@@ -6,13 +6,6 @@ public class Member {
     private Long id;
     private String name;
 
-    public Member() {
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public Long getId() {
         return id;
     }
