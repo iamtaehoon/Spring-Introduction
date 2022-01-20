@@ -1,6 +1,11 @@
 package com.example.introduction.controller;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -9,7 +14,6 @@ import com.example.introduction.service.MemberService;
 
 @Controller
 public class HelloController {
-
     MemberService memberService = new MemberService();
 
     @GetMapping("/")
@@ -19,22 +23,29 @@ public class HelloController {
     }
 
     @GetMapping("/members/new")
-    public String createMemberForm() {
+    public String createMemberForm(Model model) {
         return "members/createMemberForm";
     }
 
     @PostMapping("/members/new")
-    public String saveMember(MemberForm memberForm) { //ModelAttribute 그거였나? 헷갈림..
+    public String saveMember(MemberForm memberForm, Model model) { //ModelAttribute 그거였나? 헷갈림..
         Member member = new Member(memberForm.getName());
         try {
             memberService.join(member);
         } catch (IllegalArgumentException e) {
-            //오류메세지 넣어서 전달해야함.
-            return "redirect:/members/new";
+            Map<String, String> errors = new HashMap<>();
+            errors.put("memberName", "회원 이름이 중복되었습니다.");
+            model.addAttribute("errors", errors);
+            return "members/createMemberForm";
         }
         return "redirect:/";
     }
 
-    // @GetMapping("/members")
+    @GetMapping("/members")
+    public String showMemberList(Model model) { // 아 모델 여기에 넣는구나
+        List<Member> members = memberService.findMembers();
+        model.addAttribute("members", members);
+        return "members/memberList";
+    }
 
 }
