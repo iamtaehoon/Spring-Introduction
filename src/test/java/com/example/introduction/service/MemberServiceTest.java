@@ -5,20 +5,32 @@ import static org.assertj.core.api.Assertions.*;
 import java.util.List;
 import java.util.Optional;
 
+import javax.persistence.Entity;
+import javax.persistence.EntityManager;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.test.annotation.Rollback;
 
+import com.example.introduction.IntroductionApplication;
 import com.example.introduction.domain.Member;
+import com.example.introduction.repository.JpaMemberRepository;
 import com.example.introduction.repository.MemberRepository;
 import com.example.introduction.repository.MemoryMemberRepository;
 
+@Rollback
 class MemberServiceTest {
-    MemberRepository memberRepository = new MemoryMemberRepository();
-    MemberService memberService = new MemberService(memberRepository);
 
-    @AfterEach
-    public void afterEach() {
-        memberRepository.clearAll();
+    @Autowired
+    private ApplicationContext ac = new AnnotationConfigApplicationContext(IntroductionApplication.class);
+    private MemberService memberService;
+
+    public MemberServiceTest() {
+        memberService = ac.getBean(MemberService.class);
     }
 
     @Test
