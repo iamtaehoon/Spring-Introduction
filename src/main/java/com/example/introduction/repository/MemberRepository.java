@@ -5,7 +5,7 @@ import java.util.Optional;
 
 import com.example.introduction.domain.Member;
 
-public interface MemberRepositoryInterface {
+public interface MemberRepository {
     //등록
     Long save(Member member);
 

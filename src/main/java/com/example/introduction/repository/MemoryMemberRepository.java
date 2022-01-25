@@ -1,8 +1,6 @@
 package com.example.introduction.repository;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,8 +10,8 @@ import org.springframework.stereotype.Repository;
 
 import com.example.introduction.domain.Member;
 
-@Repository
-public class MemoryMemberRepository implements MemberRepositoryInterface {
+// @Repository
+public class MemoryMemberRepository implements MemberRepository {
     private static Map<Long, Member> memberRepository = new HashMap();
     private static Long sequence = 0L;
 

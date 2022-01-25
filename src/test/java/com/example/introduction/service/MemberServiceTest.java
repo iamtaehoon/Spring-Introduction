@@ -6,16 +6,14 @@ import java.util.List;
 import java.util.Optional;
 
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import com.example.introduction.domain.Member;
-import com.example.introduction.repository.MemberRepositoryInterface;
+import com.example.introduction.repository.MemberRepository;
 import com.example.introduction.repository.MemoryMemberRepository;
 
 class MemberServiceTest {
-    MemberRepositoryInterface memberRepository = new MemoryMemberRepository();
+    MemberRepository memberRepository = new MemoryMemberRepository();
     MemberService memberService = new MemberService(memberRepository);
 
     @AfterEach

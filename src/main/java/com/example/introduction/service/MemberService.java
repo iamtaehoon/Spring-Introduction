@@ -1,6 +1,5 @@
 package com.example.introduction.service;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -8,15 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.introduction.domain.Member;
-import com.example.introduction.repository.MemberRepositoryInterface;
-import com.example.introduction.repository.MemoryMemberRepository;
+import com.example.introduction.repository.MemberRepository;
 
 @Service
 public class MemberService {
-    private final MemberRepositoryInterface memberRepository;
+    private final MemberRepository memberRepository;
 
     @Autowired
-    public MemberService(MemberRepositoryInterface memberRepository) {
+    public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
 
