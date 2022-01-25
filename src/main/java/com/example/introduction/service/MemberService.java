@@ -4,10 +4,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.stereotype.Service;
+
 import com.example.introduction.domain.Member;
 import com.example.introduction.repository.MemberRepositoryInterface;
 import com.example.introduction.repository.MemoryMemberRepository;
 
+@Service
 public class MemberService {
     private MemberRepositoryInterface memberRepository =new MemoryMemberRepository();
 

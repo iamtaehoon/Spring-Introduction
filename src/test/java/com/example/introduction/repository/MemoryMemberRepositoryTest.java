@@ -4,13 +4,20 @@ import java.util.List;
 import java.util.Optional;
 
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import com.example.introduction.domain.Member;
 
 class MemoryMemberRepositoryTest {
+
     MemoryMemberRepository memberRepository = new MemoryMemberRepository();
 
+    @AfterEach
+    void clearAll() {
+        memberRepository.clearAll();
+    }
     @Test
     void 회원_저장() {
         //given
@@ -25,9 +32,9 @@ class MemoryMemberRepositoryTest {
     @Test
     void 회원_조회() {
         //given
-        Member member1 = new Member("mem1");
+        Member member1 = new Member("member1");
         memberRepository.save(member1);
-        Member member2 = new Member("mem2");
+        Member member2 = new Member("member2");
         memberRepository.save(member2);
         Member member3 = new Member("mem3");
         memberRepository.save(member3);

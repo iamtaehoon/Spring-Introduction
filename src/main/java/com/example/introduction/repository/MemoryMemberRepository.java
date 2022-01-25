@@ -8,11 +8,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import org.springframework.stereotype.Repository;
+
 import com.example.introduction.domain.Member;
 
+@Repository
 public class MemoryMemberRepository implements MemberRepositoryInterface {
-    private Map<Long, Member> memberRepository = new HashMap();
-    private Long sequence = 0L;
+    private static Map<Long, Member> memberRepository = new HashMap();
+    private static Long sequence = 0L;
 
     public MemoryMemberRepository() {
     }
@@ -38,5 +41,9 @@ public class MemoryMemberRepository implements MemberRepositoryInterface {
     @Override
     public List<Member> findAll() {
         return new ArrayList<>(memberRepository.values());
+    }
+
+    public void clearAll() {
+        memberRepository.clear();
     }
 }
