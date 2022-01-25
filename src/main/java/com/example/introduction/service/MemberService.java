@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.introduction.domain.Member;
@@ -12,7 +13,12 @@ import com.example.introduction.repository.MemoryMemberRepository;
 
 @Service
 public class MemberService {
-    private MemberRepositoryInterface memberRepository =new MemoryMemberRepository();
+    private final MemberRepositoryInterface memberRepository;
+
+    @Autowired
+    public MemberService(MemberRepositoryInterface memberRepository) {
+        this.memberRepository = memberRepository;
+    }
 
     public Long join(Member member) {
         validateDuplicateMember(member);

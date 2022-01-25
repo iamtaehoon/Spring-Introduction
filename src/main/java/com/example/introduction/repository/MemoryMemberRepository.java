@@ -43,6 +43,7 @@ public class MemoryMemberRepository implements MemberRepositoryInterface {
         return new ArrayList<>(memberRepository.values());
     }
 
+    @Override
     public void clearAll() {
         memberRepository.clear();
     }

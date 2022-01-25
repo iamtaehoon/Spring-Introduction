@@ -5,12 +5,23 @@ import static org.assertj.core.api.Assertions.*;
 import java.util.List;
 import java.util.Optional;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.example.introduction.domain.Member;
+import com.example.introduction.repository.MemberRepositoryInterface;
+import com.example.introduction.repository.MemoryMemberRepository;
 
 class MemberServiceTest {
-    MemberService memberService = new MemberService();
+    MemberRepositoryInterface memberRepository = new MemoryMemberRepository();
+    MemberService memberService = new MemberService(memberRepository);
+
+    @AfterEach
+    public void afterEach() {
+        memberRepository.clearAll();
+    }
 
     @Test
     void 회원가입() {

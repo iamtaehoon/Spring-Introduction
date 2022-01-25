@@ -5,19 +5,23 @@ import java.util.Optional;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.example.introduction.domain.Member;
+import com.example.introduction.service.MemberService;
 
 class MemoryMemberRepositoryTest {
 
-    MemoryMemberRepository memberRepository = new MemoryMemberRepository();
+    MemberRepositoryInterface memberRepository = new MemoryMemberRepository();
 
     @AfterEach
     void clearAll() {
         memberRepository.clearAll();
     }
+    
     @Test
     void 회원_저장() {
         //given

@@ -13,4 +13,6 @@ public interface MemberRepositoryInterface {
     Optional<Member> findById(Long memberId);
     Optional<Member> findByName(String memberName);
     List<Member> findAll();
+
+    void clearAll();
 }
